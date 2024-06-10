@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import MouseClicker from './MouseClicker'
 
 
 function App() {
