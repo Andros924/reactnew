@@ -10,12 +10,12 @@ function TodoList() {
 
   const addTodo = () => {
     setTodos([...todos, newTodo]);
-    setNewTodo(''); // Clear input after adding
+    setNewTodo('');
   };
 
   const removeTodo = (index) => {
     const updatedTodos = [...todos];
-    updatedTodos.splice(index, 1); // Remove item at specific index
+    updatedTodos.splice(index, 1); 
     setTodos(updatedTodos);
   };
 
