@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import useFetchData from './useFetchData'; 
+import React, { useState, useEffect } from 'react';
+import GithubUser from './GithubUser'; // Assuming GithubUser is in a separate file
 
 function GithubUsers() {
   const [username, setUsername] = useState('');
@@ -8,18 +8,28 @@ function GithubUsers() {
 
   const handleSearch = (event) => {
     event.preventDefault();
-    setUsername(event.target.value.trim()); 
+    setUsername(event.target.value.trim()); // Trim leading/trailing spaces
   };
 
-  const fetchData = async () => {
-    try {
-      const userData = await useFetchData(`https://api.github.com/users/${username}`);
-      setSearchResults([userData.data]);
-      setError(null);
-    } catch (error) {
-      setError(error);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(`https://api.github.com/users/${username}`);
+        if (!response.ok) {
+          throw new Error(`Error: ${response.status}`);
+        }
+        const userData = await response.json();
+        setSearchResults([userData]);
+        setError(null);
+      } catch (error) {
+        setError(error);
+      }
+    };
+
+    if (username) {
+      fetchData();
     }
-  };
+  }, [username]);
 
   return (
     <div>
