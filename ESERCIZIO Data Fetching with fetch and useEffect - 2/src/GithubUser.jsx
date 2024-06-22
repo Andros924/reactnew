@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import GithubUser from './GithubUser'; // Assuming GithubUser is in a separate file
+import GithubUser from './GithubUser'; 
 
 function GithubUsers() {
   const [username, setUsername] = useState('');
@@ -8,7 +8,7 @@ function GithubUsers() {
 
   const handleSearch = (event) => {
     event.preventDefault();
-    setUsername(event.target.value.trim()); // Trim leading/trailing spaces
+    setUsername(event.target.value.trim()); 
   };
 
   useEffect(() => {
