@@ -30,10 +30,10 @@ const GithubUserList = () => {
 
   return (
     <div>
-      <Route exact path="/"> {/* Index route for the "Add a user" message */}
+      <Route exact path="/"> 
         {!users.length && <p>Add a user and select it to view details.</p>}
       </Route>
-      <Route path="/users/:login"> {/* Existing route for user details */}
+      <Route path="/users/:login"> 
         <ShowGithubUser />
       </Route>
       {isLoading && <p>Caricamento utenti in corso...</p>}
